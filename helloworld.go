@@ -22,7 +22,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	// convert to WIB
 	kfc := restaurant{"KFC", false}
 	t := time.Now().Unix()
-	if t == 1588021200 {
+	if t >= 1588021200 {
 		kfc.Open = true
 	} else {
 		kfc.Open = false
