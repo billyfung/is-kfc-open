@@ -8,9 +8,6 @@
 </head>
 <body> 
     <h1>Is KFC open?</h1>
-    {% if result == 1 %}
-    <h2>YES KFC IS OPEN!</h2>
-    {% else %}
-    <h2>NO PLEASE STAY AT HOME!</h2>
-  {% endif %}
+    {{if .Open}}<h2>YES KFC IS OPEN!</h2>{{else}}<h2>NO PLEASE STAY AT HOME!</h2>{{end}}
 </body>
+</html>

@@ -2,21 +2,25 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"os"
-	"time"
 )
+
+// Model of stuff to render a page
+type restaurant struct {
+	Name string
+	Open bool
+}
 
 func handler(w http.ResponseWriter, r *http.Request) {
 	log.Print("received a request.")
-	target := os.Getenv("TARGET")
-	if target == "" {
-		target = "World"
-	}
-	t := time.Now().UTC()
+	tmpl := template.Must(template.ParseFiles("templates/index.html"))
 
-	fmt.Fprintf(w, "Hello %s!, UTC time is %s\n", target, t)
+	// t := time.Now()
+
+	tmpl.Execute(w, restaurant{"KFC", false})
 }
 
 func main() {
