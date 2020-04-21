@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 // Model of stuff to render a page
@@ -17,14 +18,20 @@ type restaurant struct {
 func handler(w http.ResponseWriter, r *http.Request) {
 	log.Print("received a request.")
 	tmpl := template.Must(template.ParseFiles("templates/index.html"))
-
-	// t := time.Now()
-
-	tmpl.Execute(w, restaurant{"KFC", false})
+	//akl, _ := time.LoadLocation("Pacific/Auckland")
+	// convert to WIB
+	kfc := restaurant{"KFC", false}
+	t := time.Now().Unix()
+	if t == 1588021200 {
+		kfc.Open = true
+	} else {
+		kfc.Open = false
+	}
+	tmpl.Execute(w, kfc)
 }
 
 func main() {
-	log.Print("started main()")
+	log.Print("started server()")
 
 	http.HandleFunc("/", handler)
 
