@@ -1,0 +1,6 @@
+{
+    "dockerFile": "Dockerfile-dev",
+    "extensions": [ 
+       "ms-vscode.go" 
+    ]
+ }
