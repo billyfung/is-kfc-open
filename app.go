@@ -31,7 +31,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	log.Print("started server()")
+	log.Print("started server")
 
 	http.HandleFunc("/", handler)
 
