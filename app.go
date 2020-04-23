@@ -16,8 +16,13 @@ type restaurant struct {
 }
 
 func handler(w http.ResponseWriter, r *http.Request) {
+	// Working Directory
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
 	log.Print("received a request.")
-	tmpl := template.Must(template.ParseFiles("templates/index.html"))
+	tmpl := template.Must(template.ParseFiles(wd + "/index.html"))
 	//akl, _ := time.LoadLocation("Pacific/Auckland")
 	// convert to WIB
 	kfc := restaurant{"KFC", false}
