@@ -1,8 +1,11 @@
 steps:
-    - name: 'gcr.io/cloud-builders/docker'
-      args: 
-        - build
-        - "--tag=gcr.io/funsies-274500/kfc"
-        - "--file=Dockerfile-prod"
-        - .
+- name: 'gcr.io/cloud-builders/docker'
+    args: 
+    - build
+    - "--tag=gcr.io/funsies-274500/kfc"
+    - "--file=Dockerfile-prod"
+    - .
+# Deploy container image to Cloud Run
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['run', 'deploy', 'kfc', '--image', 'gcr.io/funsies-274500/kfc', '--region', 'asia-east1', '--platform', 'managed', '--allow-unauthenticated']
 images: [gcr.io/funsies-274500/kfc]
