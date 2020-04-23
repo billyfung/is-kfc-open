@@ -1,0 +1,8 @@
+steps:
+    - name: 'gcr.io/cloud-builders/docker'
+      args: 
+        - build
+        - "--tag=gcr.io/funsies-274500/kfc"
+        - "--file=Dockerfile-prod"
+        - .
+images: [gcr.io/funsies-274500/kfc]
